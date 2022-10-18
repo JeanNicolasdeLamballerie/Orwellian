@@ -9,7 +9,8 @@ interface OrwOptions {
 type logLevel = 'silent' | 'error' | 'debug';
 
 interface ServerOptions extends OrwOptions {
-    path?: string;
+    relativePath?: string;
+    absolutePath?: string | null;
     deactivateFile?: boolean;
     filename?: string;
 }

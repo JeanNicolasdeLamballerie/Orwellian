@@ -1,6 +1,10 @@
 import fs from 'fs';
 import path from "path";
-
+const p = ( require.main?.paths[ 0 ].split( 'node_modules' )[ 0 ].slice( 0, -1 ) );
+const _dirPath = p ? p : null;
+console.log( "marker" );
+console.log( _dirPath );
+console.log( require.main?.paths[ 0 ].split( 'node_modules' )[ 0 ] );
 const generate = async ( path: string ) => {
     try
     {
@@ -37,7 +41,9 @@ async function createDirectories ( pathname: string ) {
 }
 
 export default class Asimovian {
-    path: string = "./logs";
+    relativePath: string = "logs";
+    absolutePath: string = '';
+    path: string = '';
     filename: string = "log.txt";
     appName: string = "default";
     version: string = "0.0.0";
@@ -66,13 +72,20 @@ export default class Asimovian {
     };
 
     constructor ( options?: ServerOptions ) {
-        generate( options?.path ? options.path : this.path );
+        if ( !options?.absolutePath && !_dirPath )
+        {
+            throw new Error( 'Error setting a relative or automatic path, could not define current project position. Please provide an absolute path instead (options.absolutePath)' );
+        }
+        if ( options?.absolutePath ) this.absolutePath = options.absolutePath;
+        if ( options?.relativePath ) this.relativePath = options.relativePath;
+        const rPath = path.join( _dirPath as string, this.relativePath );
+        this.path = this.absolutePath || ( rPath );
+        generate( this.path );
 
         this.callBack = this.defaultCallBack;
         if ( options )
         {
             if ( options.filename ) this.filename = options.filename;
-            if ( options.path ) this.path = options.path;
             if ( options.deactivateFile ) this.deactivateFile = options.deactivateFile;
             if ( options.appName ) this.appName = options.appName;
             if ( options.type ) this.type = options.type;

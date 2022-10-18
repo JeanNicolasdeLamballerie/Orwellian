@@ -1,13 +1,12 @@
 interface OrwOptions {
-    appName?: string,
-    callBack?: ( data: any ) => void;
-    logging?: boolean; //(default to true)
+    appName?: string;
+    callBack?: (data: any) => void;
+    logging?: boolean;
     logLevel?: logLevel;
     type?: string;
     version?: string;
 }
-type logLevel = 'silent' | 'error' | 'debug';
-
+declare type logLevel = 'silent' | 'error' | 'debug';
 interface ServerOptions extends OrwOptions {
     relativePath?: string;
     absolutePath?: string | null;

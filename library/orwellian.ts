@@ -45,7 +45,21 @@ export default class Orwellian {
         if ( cb ) cb( data );
     }
 
-
+    /**
+     * @options ```js
+      const options = { 
+        appName: string = "default",
+        version: string = "0.0.0",
+        type: string = "development", // "production";
+        callBack: Function, // A callback to be executed on any execution of the listener.
+         logging: boolean = true,
+         logLevel: logLevel = 'debug', // The level of logging, e.g. "silent", "error" or "debug", respectively not logging to the console in any case, logging only errors to the console, and logging all fired events to the console.
+      } 
+     * ```
+     * @hello 891
+     * @since v1.0.0
+     * @return A constructor for a new Orwellian instance. It accepts the listed `options`.
+     */
     constructor ( options?: OrwOptions ) {
         this.callBack = this.defaultCallBack;
         if ( options )

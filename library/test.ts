@@ -9,7 +9,7 @@ const orwell = new Orwellian( {
     logLevel: "silent",
     version: "0.0.1",
     logging: true,
-    callBack: ( data ) => {
+    callBack: ( data: string ) => {
         console.log( "SENDING TO SERVER" );
         received = data;
 

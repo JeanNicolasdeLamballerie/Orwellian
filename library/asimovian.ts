@@ -2,9 +2,7 @@ import fs from 'fs';
 import path from "path";
 const p = ( require.main?.paths[ 0 ].split( 'node_modules' )[ 0 ].slice( 0, -1 ) );
 const _dirPath = p ? p : null;
-console.log( "marker" );
-console.log( _dirPath );
-console.log( require.main?.paths[ 0 ].split( 'node_modules' )[ 0 ] );
+
 const generate = async ( path: string ) => {
     try
     {

@@ -1,15 +1,21 @@
 {
   "name": "orwellian",
-  "version": "1.0.1",
-  "description": "",
+  "version": "1.0.5",
+  "types": "library/types/generated",
+  "description": "A logging library with tools for frontend and backend.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JeanNicolasdeLamballerie/Orwellian.git"
+  },
   "main": "lib/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publishW": "rm -rf lib ; tsc ; npm publish"
   },
-  "author": "",
+  "author": "Dekharen/Jean Nicolas de Lamballerie",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^18.7.14"
+    "@types/node": "^18.11.0"
   }
 }
